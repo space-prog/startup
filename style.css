@@ -237,14 +237,18 @@ h1 {
 
 #track {
     display: grid;
+    position: relative;
     grid-auto-flow: column;
-    gap: 37px;
+    height: 30vh;
+    gap: 30px;
     transition: transform .5s ease;
 }
 
 .itemTrack {
-    width: 14.2vw;
-    height: 13vw;
+    position: absolute;
+    top: 0;
+    width: 260px;
+    height: 260px;
 }
 
 .itemTrack img {
@@ -256,13 +260,13 @@ h1 {
 .fixed {
     position: relative;
     width: 1200px;
-    height: 320px;
+    height: 350px;
     margin: 0 auto;
     overflow: hidden;
 }
 
-#left,
-#right {
+#btnLeft,
+#btnRight {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -274,28 +278,28 @@ h1 {
     transition: all 0.3s ease;
 }
 
-#left {
+#btnLeft {
     padding: 13px 12px 13px 15px;
 }
 
-#right {
+#btnRight {
     padding: 13px 15px 13px 12px;
 }
 
-#left:hover,
-#right:hover {
+#btnLeft:hover,
+#btnRight:hover {
     background-color: #c0301c;
     fill: #fff;
     transition: all 0.3s ease;
 }
 
-#left {
+#btnLeft {
     left: 0;
     top: 50%;
     transform: translateY(-120%);
 }
 
-#right {
+#btnRight {
     right: 0;
     top: 50%;
     transform: translateY(-120%);
