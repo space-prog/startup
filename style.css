@@ -190,7 +190,7 @@ h1 {
 
 .services .item:hover {
     border-color: #999;
-} 
+}
 
 .services .item p {
     font-size: 14px;
@@ -225,4 +225,101 @@ h1 {
 
 .services .item .icon svg {
     fill: #c0301c;
+}
+
+.aboutText {
+    display: flex;
+    padding: 70px 0;
+    gap: 35px;
+}
+
+/* slider */
+
+#track {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 37px;
+    transition: transform .5s ease;
+}
+
+.itemTrack {
+    width: 14.2vw;
+    height: 13vw;
+}
+
+.itemTrack img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.fixed {
+    position: relative;
+    width: 1200px;
+    height: 320px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#left,
+#right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    text-decoration: none;
+    fill: #ddd;
+    background-color: #c9c9c9;
+    padding: 13px 12px 13px 15px;
+    transition: all 0.3s ease;
+}
+
+#left {
+    padding: 13px 12px 13px 15px;
+}
+
+#right {
+    padding: 13px 15px 13px 12px;
+}
+
+#left:hover,
+#right:hover {
+    background-color: #c0301c;
+    fill: #fff;
+    transition: all 0.3s ease;
+}
+
+#left {
+    left: 0;
+    top: 50%;
+    transform: translateY(-120%);
+}
+
+#right {
+    right: 0;
+    top: 50%;
+    transform: translateY(-120%);
+}
+
+.itemTrack h4 {
+    padding-top: 15px;
+    font-size: 14px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 500;
+    font-family: "Montserrat";
+}
+
+.itemTrack p {
+    padding-top: 5px;
+    font-size: 13px;
+    line-height: 24px;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+}
+
+.itemTrack {
+    text-align: center;
 }
