@@ -6,7 +6,7 @@
 }
 
 header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(img/53.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(img/startup-hero-bg.jpg);
     background-size: cover;
     background-position: center;
 }
