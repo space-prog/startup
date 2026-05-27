@@ -251,10 +251,15 @@ h1 {
     height: 260px;
 }
 
-.itemTrack img {
+.itemTrack .item-img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.itemTrack:hover ul {
+    opacity: 1;
+    transition: all 0.3s ease;
 }
 
 .fixed {
@@ -326,4 +331,145 @@ h1 {
 
 .itemTrack {
     text-align: center;
+}
+
+.itemTrack ul {
+    position: absolute;
+    display: flex;
+    opacity: 0;
+    gap: 10px;
+    justify-content: center;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+}
+
+.itemTrack ul li {
+    /* background-color: #ff1414; */
+    transition: all 0.3s ease;
+    list-style: none;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemTrack ul li:hover {
+    background-color: #c0301c;
+    transition: all 0.3s ease;
+}
+
+.works .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.works ul {
+    display: flex;
+    gap: 30px;
+}
+
+.works ul li {
+    list-style: none;
+}
+
+.works ul li a {
+    text-decoration: none;
+    color: #555555;
+    transition: all 0.3s ease;
+}
+
+.works ul li a:hover {
+    color: #c0301c;
+    transition: all 0.3s ease;
+}
+
+.worksGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 70px 0;
+}
+
+.gridItem a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gridItem {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.gridItem::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(224, 93, 76, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.item-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gridItem:hover::after {
+    opacity: 1;
+}
+
+.gridItem:hover .item-content {
+    opacity: 1;
+}
+
+.item-content h4 {
+    font-size: 18px;
+    line-height: 24px;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: "Montserrat";
+    text-align: center;
+}
+
+.item-content p {
+    font-size: 12px;
+    line-height: 24px;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+    text-align: center;
+}
+
+.view-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #c0301c;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+    text-align: center;
+    text-decoration: none;
 }
