@@ -674,7 +674,7 @@ h1 {
 }
 
 .reviews {
-    padding: 95px 0;
+    padding: 100px 0;
 }
 
 .reviews ul {
@@ -698,4 +698,200 @@ h1 {
 
 .reviews ul li span.active {
     background-color: #c0301c;
+}
+
+.contact {
+    padding: 100px 0;
+}
+
+.contactDetails {
+    display: flex;
+    gap: 15px;
+    align-items: top;
+}
+
+.detText p {
+    font-size: 12px;
+    line-height: 20px;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+}
+
+.detText p:first-child {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 600;
+    font-family: "Montserrat";
+    padding-bottom: 10px;
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contactForm input {
+    width: 350px;
+    height: 44px;
+    border: 1px solid #555555;
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+    padding: 0 17px;
+}
+
+.contactForm input:focus {
+    outline: none;
+    border-color: #c0301c;
+    transition: all 0.3s ease;
+}
+
+.contactWrapper {
+    gap: 160px;
+    padding-top: 70px;
+}
+
+.contactForm .flexCenter {
+    gap: 20px;
+}
+
+.inputs {
+    display: flex;
+    gap: 30px;
+}
+
+.contactForm textarea {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #555555;
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+    padding: 17px;
+    resize: none;
+    outline: none;
+}
+
+.contactForm textarea:focus {
+    border-color: #c0301c;
+    transition: all 0.3s ease;
+}
+
+.submit {
+    display: flex;
+    padding: 12px 37px;
+    border: 1px solid #555;
+    color: #000;
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 400;
+    text-align: center;
+    font-family: "Roboto Slab";
+    text-decoration: none;
+    transition: all 0.3s ease;
+    align-self: flex-start
+}
+
+.submit:hover {
+    background-color: #c0301c;
+    color: #fff;
+    border-color: #c0301c;
+    transition: all 0.3s ease;
+}
+
+.contactForm p {
+    font-size: 12px;
+    line-height: 20px;
+    color: #555;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+}
+
+.contactForm p span {
+    color: #c0301c;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.submitWrapper {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    align-self: flex-start;
+}
+
+footer {
+    background-color: #c0301c;
+    padding: 70px 0;
+}
+
+footer .line {
+    background-color: #fff;
+}
+
+footer .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+}
+
+footer ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding-bottom: 30px;
+}
+
+footer ul li a {
+    display: flex;
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 18px;
+    background-color: #c0301c;
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+}
+
+footer ul li a:hover {
+    background-color: #fff;
+    color: #c0301c;
+    transition: all 0.3s ease;
+    fill: #c0301c;
+}
+
+/* Перебиваем скрытые стили с помощью точечного обращения к классу .a */
+footer ul li a svg path.a {
+    fill: #ffffff;
+    /* Теперь она ОБЯЗАНА стать белой */
+    transition: fill 0.3s ease;
+}
+
+/* Ховер оставляем оранжевым */
+footer ul li a:hover svg path.a {
+    fill: #c0301c;
+    /* Твой оранжевый */
+}
+
+footer p {
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Roboto Slab";
 }
