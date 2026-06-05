@@ -895,3 +895,13 @@ footer p {
     font-weight: 400;
     font-family: "Roboto Slab";
 }
+
+
+.gridItem.hidden {
+  display: none;
+}
+
+.works ul li a.active {
+  color: #c0301c;
+  border-bottom: 2px solid #c0301c;
+}

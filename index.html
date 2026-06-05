@@ -153,22 +153,21 @@
                         viewBox="-10 -960 700 960">
                         <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" /></svg></a>
             </div>
-            <script src="script.js"></script>
         </section>
         <section class="works">
             <div class="wrapper">
                 <p class="srv-h1">Our Works</p>
                 <span class="line"></span>
                 <ul>
-                    <li><a href="#">All</a></li>
-                    <li><a href="#">Branding</a></li>
-                    <li><a href="#">Design</a></li>
-                    <li><a href="#">Development</a></li>
-                    <li><a href="#">Strategy</a></li>
+                    <li><a href="#" data-filter="all" class="active">All</a></li>
+                    <li><a href="#" data-filter="branding">Branding</a></li>
+                    <li><a href="#" data-filter="design">Design</a></li>
+                    <li><a href="#" data-filter="development">Development</a></li>
+                    <li><a href="#" data-filter="strategy">Strategy</a></li>
                 </ul>
                 <div class="worksGrid">
-                    <div class="gridItem">
-                        <a href="#"><img src="img/work1.png" alt=""></a>
+                    <div class="gridItem" data-category="branding">
+                        <a href="#"><img src="img/work1.png" alt="" ></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
                             <p>Branding</p>
@@ -184,8 +183,8 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
-                        <a href="#"><img src="img/work2.png" alt=""></a>
+                    <div class="gridItem" data-category="design">
+                        <a href="#"><img src="img/work2.png" alt="" ></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
                             <p>Branding</p>
@@ -201,7 +200,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem" data-category="development">
                         <a href="#"><img src="img/work3.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -218,8 +217,8 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
-                        <a href="#"><img src="img/work4.png" alt=""></a>
+                    <div class="gridItem" data-category="design">
+                        <a href="#"><img src="img/work4.png" alt="" ></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
                             <p>Branding</p>
@@ -235,7 +234,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem" data-category="branding">
                         <a href="#"><img src="img/work5.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -252,7 +251,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem" data-category="strategy">
                         <a href="#"><img src="img/work6.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -269,7 +268,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem" data-category="development">
                         <a href="#"><img src="img/work7.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -286,7 +285,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem" data-category="branding">
                         <a href="#"><img src="img/work8.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -303,7 +302,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem" data-category="development">
                         <a href="#"><img src="img/work9.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -485,6 +484,7 @@
             <p>Copyright © 2014-2024 Haped Theme. All rights reserved.</p>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
