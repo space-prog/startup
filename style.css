@@ -9,6 +9,11 @@ header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(img/startup-hero-bg.jpg);
     background-size: cover;
     background-position: center;
+    z-index: 1000;
+}
+
+* {
+    scroll-behavior: smooth;
 }
 
 h1 {
@@ -20,6 +25,134 @@ h1 {
     font-weight: 500;
     text-align: center;
     padding-bottom: 20px;
+}
+
+.blackbg {
+    position: fixed;
+    display: none;
+    z-index: 5000;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.authpopup {
+    position: fixed;
+    z-index: 5001;
+    display: none;
+    transition: all .5s ease;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    font-family: "Roboto Slab";
+    color: #999;
+    border-radius: 10px;
+    border: 2px solid #c0301c;
+}
+
+.wrap {
+    display: block;
+    position: relative;
+    padding: 50px 50px;
+}
+
+.closepopup {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.dragblock, .dragblockpos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    width: 100px;
+    height: 100px;
+    background-color: #c0301c;
+    border: 1px solid #555;
+    border-radius: 20px;
+}
+
+.dragblockpos {
+    background-color: #ccc;
+}
+
+.dragposition {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    background-color: #fff;
+    height: 150px;
+}
+
+.wrap .flexBetween {
+    gap: 20px;
+}
+
+.dragblock {
+    cursor: grab;
+    transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dragblock:hover {
+    box-shadow: 0 6px 16px rgba(192, 48, 28, 0.4);
+    transform: scale(1.05);
+}
+
+.dragblock.dragging {
+    opacity: 0.5;
+    transform: scale(1.1);
+    cursor: grabbing;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dragblockpos {
+    transition: all 0.3s ease;
+    border: 3px dashed transparent;
+}
+
+.dragblockpos.hover-slot {
+    border-color: #c0301c;
+    background-color: #e8e8e8;
+    transform: scale(1.05);
+}
+
+.dragblockpos.filled {
+    background-color: #c0301c;
+    border: 1px solid #555;
+}
+
+.dragblock.dropped {
+    animation: dropBounce 0.4s ease-out;
+}
+
+@keyframes dropBounce {
+    0% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.dragblockpos.correct {
+    background-color: #4AAE9B;
+    border: 2px solid #2d7a6b;
+}
+
+.dragblockpos.correct .dragblock {
+    background-color: #4AAE9B;
+    border: 1px solid #2d7a6b;
 }
 
 .flexBetween {
@@ -40,21 +173,27 @@ h1 {
 }
 
 .headerMain {
-    padding-top: 45px;
+    position: fixed;
+    width: 100%;
+    padding: 20px;
     align-items: center;
+    background: rgba(192, 48, 28, 0.6);
+    backdrop-filter: blur(5px);
 }
 
 .menu {
     display: flex;
+    align-items: center;
     gap: 35px;
     list-style: none;
 }
 
+
 .menu a {
     position: relative;
     font-size: 16px;
+    line-height: 16px;
     letter-spacing: 0px;
-    line-height: 24px;
     color: #ffffff;
     font-weight: 500;
     text-decoration: none;
@@ -904,4 +1043,10 @@ footer p {
 .works ul li a.active {
   color: #c0301c;
   border-bottom: 2px solid #c0301c;
+}
+
+.parallax-block {
+    position: relative;
+    width: 100%;
+    background-attachment: fixed;
 }
