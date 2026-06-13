@@ -116,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const dragblocks = document.querySelectorAll('.dragblock');
   const positionSlots = document.querySelectorAll('.dragblockpos');
   const closepopup = document.querySelector('.closepopup');
-  const successMessage = document.querySelector('.success-message');
   const h1 = document.getElementById("edith1");
   const black = document.getElementById("blackbg");
 
@@ -177,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
         newBlock.dataset.word = word;
         newBlock.textContent = word;
         newBlock.style.cursor = 'grab';
+        newBlock.setAttribute('draggable', 'true');
         slot.appendChild(newBlock);
         slot.classList.add('filled');
         addDragEventsToMovedBlock(newBlock, slot);
