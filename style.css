@@ -364,7 +364,7 @@ h1 {
     border-color: #c0301c;
 }
 
-.services .item .icon:hover>svg {
+.services .item .icon:hover>svg .a {
     fill: #fff;
     transition: border-color 0.3s ease;
 }

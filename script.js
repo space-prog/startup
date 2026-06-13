@@ -117,7 +117,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const positionSlots = document.querySelectorAll('.dragblockpos');
   const closepopup = document.querySelector('.closepopup');
   const successMessage = document.querySelector('.success-message');
-  const h1 = document.getElementById("edith1")
+  const h1 = document.getElementById("edith1");
+  const black = document.getElementById("blackbg");
 
   const correctOrder = ['StartUp', 'Is', 'The', 'Best'];
 
@@ -229,7 +230,6 @@ document.addEventListener('DOMContentLoaded', function () {
   function showSuccess() {
     h1.textContent = "Hello Developer!!!!"
     document.querySelector('.authpopup').style.display = 'none';
-    successMessage.style.display = 'none';
     black.style.display = 'none'
   }
 });
