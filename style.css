@@ -549,7 +549,7 @@ h1 {
 }
 
 .gridItem {
-    display: none;
+    display: block;
     position: relative;
     overflow: hidden;
     cursor: pointer;
