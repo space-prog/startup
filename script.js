@@ -1,3 +1,37 @@
+const sortBtn = document.querySelectorAll(".cardLinks"),
+      sortItem = document.querySelectorAll(".gridItem")
+
+console.log(sortBtn)
+sortBtn.forEach(itemBtn => {
+  if(itemBtn.classList.contains("activeBtn")) {
+    sortItem.forEach(bl => {
+      if(itemBtn.textContent == bl.dataset.category || itemBtn.textContent == "All") {
+        bl.classList.add("active")
+      } else {
+        bl.classList.remove("bl")
+      }
+    })
+  }
+  itemBtn.addEventListener("click", function(e) {
+    sortBtn.forEach(item => {
+      item.classList.remove("activeBtn")
+    })
+    console.log("+");
+    e.preventDefault()
+    sortItem.forEach(bl => {
+      if(itemBtn.textContent == bl.dataset.category || itemBtn.textContent == "All") {
+        console.log(bl)
+        bl.classList.add("active")
+      } else {
+        bl.classList.remove("active")
+      }
+      if(!itemBtn.classList.contains("activeBtn")) {
+        itemBtn.classList.add("activeBtn")
+      }
+    })
+  })
+})
+
 const track = document.getElementById('track')
 const btnL = document.getElementById('btnLeft')
 const btnR = document.getElementById('btnRight')
@@ -54,3 +88,5 @@ btnR.addEventListener("click", function(e) {
 })
 
 updateSlider()
+
+

@@ -153,21 +153,20 @@
                         viewBox="-10 -960 700 960">
                         <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" /></svg></a>
             </div>
-            <script src="script.js"></script>
         </section>
         <section class="works">
             <div class="wrapper">
                 <p class="srv-h1">Our Works</p>
                 <span class="line"></span>
                 <ul>
-                    <li><a href="#">All</a></li>
-                    <li><a href="#">Branding</a></li>
-                    <li><a href="#">Design</a></li>
-                    <li><a href="#">Development</a></li>
-                    <li><a href="#">Strategy</a></li>
+                    <li><a href="#" class="cardLinks activeBtn">All</a></li>
+                    <li><a href="#" class="cardLinks">Branding</a></li>
+                    <li><a href="#" class="cardLinks">Design</a></li>
+                    <li><a href="#" class="cardLinks">Development</a></li>
+                    <li><a href="#" class="cardLinks">Strategy</a></li>
                 </ul>
                 <div class="worksGrid">
-                    <div class="gridItem">
+                    <div class="gridItem " data-category="Branding">
                         <a href="#"><img src="img/work1.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -184,7 +183,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem " data-category="Branding">
                         <a href="#"><img src="img/work2.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -201,7 +200,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem " data-category="Development">
                         <a href="#"><img src="img/work3.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -218,7 +217,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem " data-category="Design">
                         <a href="#"><img src="img/work4.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -235,7 +234,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem " data-category="Strategy">
                         <a href="#"><img src="img/work5.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -252,7 +251,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem " data-category="Branding">
                         <a href="#"><img src="img/work6.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -269,7 +268,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem " data-category="Design">
                         <a href="#"><img src="img/work7.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -286,7 +285,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem " data-category="Development">
                         <a href="#"><img src="img/work8.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -303,7 +302,7 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="gridItem " data-category="Branding">
                         <a href="#"><img src="img/work9.png" alt=""></a>
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
@@ -476,15 +475,32 @@
     <footer>
         <div class="wrapper flexCenter">
             <ul>
-                <li><a href="#"><svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 14" width="17" height="14"><path class="a" d="m16 1.1q-1 0.5-2.1 0.7c-0.6-0.6-1.5-1-2.4-1-1.8 0-3.3 1.5-3.3 3.2q0 0.4 0.1 0.8c-2.7-0.2-5.1-1.4-6.8-3.4q-0.4 0.7-0.4 1.6c0 1.1 0.6 2.1 1.5 2.7q-0.9-0.1-1.5-0.4c0 1.6 1.1 2.9 2.6 3.1q-0.4 0.2-0.9 0.2-0.3 0-0.6-0.1c0.4 1.3 1.6 2.2 3.1 2.2-1.1 0.9-2.6 1.4-4.1 1.4q-0.4 0-0.8-0.1c1.5 0.9 3.2 1.5 5.1 1.5 6 0 9.3-4.9 9.3-9.1v-0.4q0.9-0.7 1.6-1.7-0.9 0.4-1.9 0.5c0.7-0.4 1.2-1 1.5-1.7z"/></svg></a></li>
-                <li><a href="#"><svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 14" width="17" height="14"><path class="a" d="m16 1.1q-1 0.5-2.1 0.7c-0.6-0.6-1.5-1-2.4-1-1.8 0-3.3 1.5-3.3 3.2q0 0.4 0.1 0.8c-2.7-0.2-5.1-1.4-6.8-3.4q-0.4 0.7-0.4 1.6c0 1.1 0.6 2.1 1.5 2.7q-0.9-0.1-1.5-0.4c0 1.6 1.1 2.9 2.6 3.1q-0.4 0.2-0.9 0.2-0.3 0-0.6-0.1c0.4 1.3 1.6 2.2 3.1 2.2-1.1 0.9-2.6 1.4-4.1 1.4q-0.4 0-0.8-0.1c1.5 0.9 3.2 1.5 5.1 1.5 6 0 9.3-4.9 9.3-9.1v-0.4q0.9-0.7 1.6-1.7-0.9 0.4-1.9 0.5c0.7-0.4 1.2-1 1.5-1.7z"/></svg></a></li>
-                <li><a href="#"><svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 14" width="17" height="14"><path class="a" d="m16 1.1q-1 0.5-2.1 0.7c-0.6-0.6-1.5-1-2.4-1-1.8 0-3.3 1.5-3.3 3.2q0 0.4 0.1 0.8c-2.7-0.2-5.1-1.4-6.8-3.4q-0.4 0.7-0.4 1.6c0 1.1 0.6 2.1 1.5 2.7q-0.9-0.1-1.5-0.4c0 1.6 1.1 2.9 2.6 3.1q-0.4 0.2-0.9 0.2-0.3 0-0.6-0.1c0.4 1.3 1.6 2.2 3.1 2.2-1.1 0.9-2.6 1.4-4.1 1.4q-0.4 0-0.8-0.1c1.5 0.9 3.2 1.5 5.1 1.5 6 0 9.3-4.9 9.3-9.1v-0.4q0.9-0.7 1.6-1.7-0.9 0.4-1.9 0.5c0.7-0.4 1.2-1 1.5-1.7z"/></svg></a></li>
-                <li><a href="#"><svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 14" width="17" height="14"><path class="a" d="m16 1.1q-1 0.5-2.1 0.7c-0.6-0.6-1.5-1-2.4-1-1.8 0-3.3 1.5-3.3 3.2q0 0.4 0.1 0.8c-2.7-0.2-5.1-1.4-6.8-3.4q-0.4 0.7-0.4 1.6c0 1.1 0.6 2.1 1.5 2.7q-0.9-0.1-1.5-0.4c0 1.6 1.1 2.9 2.6 3.1q-0.4 0.2-0.9 0.2-0.3 0-0.6-0.1c0.4 1.3 1.6 2.2 3.1 2.2-1.1 0.9-2.6 1.4-4.1 1.4q-0.4 0-0.8-0.1c1.5 0.9 3.2 1.5 5.1 1.5 6 0 9.3-4.9 9.3-9.1v-0.4q0.9-0.7 1.6-1.7-0.9 0.4-1.9 0.5c0.7-0.4 1.2-1 1.5-1.7z"/></svg></a></li>
+                <li><a href="#"><svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 14" width="17"
+                            height="14">
+                            <path class="a"
+                                d="m16 1.1q-1 0.5-2.1 0.7c-0.6-0.6-1.5-1-2.4-1-1.8 0-3.3 1.5-3.3 3.2q0 0.4 0.1 0.8c-2.7-0.2-5.1-1.4-6.8-3.4q-0.4 0.7-0.4 1.6c0 1.1 0.6 2.1 1.5 2.7q-0.9-0.1-1.5-0.4c0 1.6 1.1 2.9 2.6 3.1q-0.4 0.2-0.9 0.2-0.3 0-0.6-0.1c0.4 1.3 1.6 2.2 3.1 2.2-1.1 0.9-2.6 1.4-4.1 1.4q-0.4 0-0.8-0.1c1.5 0.9 3.2 1.5 5.1 1.5 6 0 9.3-4.9 9.3-9.1v-0.4q0.9-0.7 1.6-1.7-0.9 0.4-1.9 0.5c0.7-0.4 1.2-1 1.5-1.7z" />
+                            </svg></a></li>
+                <li><a href="#"><svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 14" width="17"
+                            height="14">
+                            <path class="a"
+                                d="m16 1.1q-1 0.5-2.1 0.7c-0.6-0.6-1.5-1-2.4-1-1.8 0-3.3 1.5-3.3 3.2q0 0.4 0.1 0.8c-2.7-0.2-5.1-1.4-6.8-3.4q-0.4 0.7-0.4 1.6c0 1.1 0.6 2.1 1.5 2.7q-0.9-0.1-1.5-0.4c0 1.6 1.1 2.9 2.6 3.1q-0.4 0.2-0.9 0.2-0.3 0-0.6-0.1c0.4 1.3 1.6 2.2 3.1 2.2-1.1 0.9-2.6 1.4-4.1 1.4q-0.4 0-0.8-0.1c1.5 0.9 3.2 1.5 5.1 1.5 6 0 9.3-4.9 9.3-9.1v-0.4q0.9-0.7 1.6-1.7-0.9 0.4-1.9 0.5c0.7-0.4 1.2-1 1.5-1.7z" />
+                            </svg></a></li>
+                <li><a href="#"><svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 14" width="17"
+                            height="14">
+                            <path class="a"
+                                d="m16 1.1q-1 0.5-2.1 0.7c-0.6-0.6-1.5-1-2.4-1-1.8 0-3.3 1.5-3.3 3.2q0 0.4 0.1 0.8c-2.7-0.2-5.1-1.4-6.8-3.4q-0.4 0.7-0.4 1.6c0 1.1 0.6 2.1 1.5 2.7q-0.9-0.1-1.5-0.4c0 1.6 1.1 2.9 2.6 3.1q-0.4 0.2-0.9 0.2-0.3 0-0.6-0.1c0.4 1.3 1.6 2.2 3.1 2.2-1.1 0.9-2.6 1.4-4.1 1.4q-0.4 0-0.8-0.1c1.5 0.9 3.2 1.5 5.1 1.5 6 0 9.3-4.9 9.3-9.1v-0.4q0.9-0.7 1.6-1.7-0.9 0.4-1.9 0.5c0.7-0.4 1.2-1 1.5-1.7z" />
+                            </svg></a></li>
+                <li><a href="#"><svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 14" width="17"
+                            height="14">
+                            <path class="a"
+                                d="m16 1.1q-1 0.5-2.1 0.7c-0.6-0.6-1.5-1-2.4-1-1.8 0-3.3 1.5-3.3 3.2q0 0.4 0.1 0.8c-2.7-0.2-5.1-1.4-6.8-3.4q-0.4 0.7-0.4 1.6c0 1.1 0.6 2.1 1.5 2.7q-0.9-0.1-1.5-0.4c0 1.6 1.1 2.9 2.6 3.1q-0.4 0.2-0.9 0.2-0.3 0-0.6-0.1c0.4 1.3 1.6 2.2 3.1 2.2-1.1 0.9-2.6 1.4-4.1 1.4q-0.4 0-0.8-0.1c1.5 0.9 3.2 1.5 5.1 1.5 6 0 9.3-4.9 9.3-9.1v-0.4q0.9-0.7 1.6-1.7-0.9 0.4-1.9 0.5c0.7-0.4 1.2-1 1.5-1.7z" />
+                            </svg></a></li>
             </ul>
             <span class="line"></span>
             <p>Copyright © 2014-2024 Haped Theme. All rights reserved.</p>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>

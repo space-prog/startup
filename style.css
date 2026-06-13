@@ -409,6 +409,7 @@ h1 {
 }
 
 .gridItem {
+    display: none;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -894,4 +895,13 @@ footer p {
     color: #ffffff;
     font-weight: 400;
     font-family: "Roboto Slab";
+}
+
+.active {
+    display: block;
+}
+
+.works .activeBtn {
+    color: #c0301c;
+    text-shadow: 0 0 2px #c0301c ;
 }
