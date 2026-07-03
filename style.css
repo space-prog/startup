@@ -6,9 +6,6 @@
 }
 
 header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(img/startup-hero-bg.jpg);
-    background-size: cover;
-    background-position: center;
     z-index: 1000;
 }
 
@@ -51,20 +48,60 @@ h1 {
     border: 2px solid #c0301c;
 }
 
+.formpopup,
+.errorform {
+    position: fixed;
+    z-index: 5001;
+    background: #fff;
+    display: none;
+    transition: all .5s ease;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    border: 2px solid #c0301c;
+    padding: 40px 50px;
+}
+
+.formpopup,
+.errorform p {
+    text-align: center;
+}
+
+.backbtn {
+    padding: 10px 15px;
+    background-color: #fff;
+    border: 1px solid #c0301c;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all .5s ease;
+}
+
+.backbtn:hover {
+    background-color: #c0301c;
+    color: #fff;
+    transition: all .5s ease;
+}
+
+.flex {
+    display: flex;
+}
+
 .wrap {
     display: block;
     position: relative;
     padding: 50px 50px;
 }
 
-.closepopup {
+.cl {
     position: absolute;
     top: 5px;
     right: 5px;
     cursor: pointer;
 }
 
-.dragblock, .dragblockpos {
+.dragblock,
+.dragblockpos {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,9 +175,11 @@ h1 {
     0% {
         transform: scale(1.1);
     }
+
     50% {
         transform: scale(0.95);
     }
+
     100% {
         transform: scale(1);
     }
@@ -623,7 +662,6 @@ h1 {
 }
 
 .likeAd {
-    background: linear-gradient(rgba(192, 48, 28, 0.6), rgba(192, 48, 28, 0.6)), url('img/dlAd.png') center / cover no-repeat;
     color: #fff;
     text-align: center;
     padding: 100px 0;
@@ -781,10 +819,31 @@ h1 {
 }
 
 .reviewLogos {
+    position: relative;
+    width: 800px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.logosTrack {
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 70px;
+    width: max-content;
+    will-change: transform;
+}
+
+.logo-item {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-item img {
+    height: 40px;
+    width: auto;
+    max-width: 110px;
+    object-fit: contain;
 }
 
 .reviewText {
@@ -874,7 +933,7 @@ h1 {
     gap: 30px;
 }
 
-.contactForm input {
+.reqinpform {
     width: 350px;
     height: 44px;
     border: 1px solid #555555;
@@ -887,7 +946,7 @@ h1 {
     padding: 0 17px;
 }
 
-.contactForm input:focus {
+.reqinpform:focus {
     outline: none;
     border-color: #c0301c;
     transition: all 0.3s ease;
@@ -907,7 +966,7 @@ h1 {
     gap: 30px;
 }
 
-.contactForm textarea {
+.textreqform {
     width: 100%;
     height: 150px;
     border: 1px solid #555555;
@@ -922,7 +981,7 @@ h1 {
     outline: none;
 }
 
-.contactForm textarea:focus {
+.textreqform:focus {
     border-color: #c0301c;
     transition: all 0.3s ease;
 }
@@ -930,6 +989,7 @@ h1 {
 .submit {
     display: flex;
     padding: 12px 37px;
+    cursor: pointer;
     border: 1px solid #555;
     color: #000;
     font-size: 12px;
@@ -1015,17 +1075,13 @@ footer ul li a:hover {
     fill: #c0301c;
 }
 
-/* Перебиваем скрытые стили с помощью точечного обращения к классу .a */
 footer ul li a svg path.a {
     fill: #ffffff;
-    /* Теперь она ОБЯЗАНА стать белой */
     transition: fill 0.3s ease;
 }
 
-/* Ховер оставляем оранжевым */
 footer ul li a:hover svg path.a {
     fill: #c0301c;
-    /* Твой оранжевый */
 }
 
 footer p {
@@ -1039,16 +1095,111 @@ footer p {
 
 
 .gridItem.hidden {
-  display: none;
+    display: none;
 }
 
 .works ul li a.active {
-  color: #c0301c;
-  border-bottom: 2px solid #c0301c;
+    color: #c0301c;
+    border-bottom: 2px solid #c0301c;
 }
 
 .parallax-block {
     position: relative;
     width: 100%;
+    overflow: hidden;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(img/startup-hero-bg.jpg);
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
+    transform: scale(1.08);
+    transition: transform .2s ease-out;
+    z-index: 0;
+}
+
+.bg2t {
+    background: linear-gradient(rgba(192, 48, 28, 0.6), rgba(192, 48, 28, 0.6)), url('img/dlAd.png') center / cover no-repeat;
+}
+
+.errorinp {
+    border-color: #c0301c;
+    border-style: dashed;
+    border-width: 2.5px;
+    color: #c0301c;
+    font-weight: bold;
+}
+
+.errorinp::placeholder {
+    color: #c0301c;
+}
+
+/* slider */
+
+.quotes-track {
+    position: relative;
+    transition: height .5s ease;
+    overflow: hidden;
+}
+
+.quote-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease;
+}
+
+.quote-item.is-active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    /* чтобы задавал высоту блока */
+}
+
+.quotes-nav {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.quote-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    transition: background .3s, color .3s, border-color .3s;
+}
+
+.quote-btn.is-active {
+    background: #c0301c;
+    color: #fff;
+    border-color: #c0301c;
+}
+
+.fade-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.fade-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.zindex5000 {
+    position: relative;
+    z-index: 5000;
 }

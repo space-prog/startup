@@ -20,7 +20,7 @@
     <div class="blackbg" id="blackbg"></div>
     <div class="authpopup">
         <div class="wrap">
-            <span class="closepopup">
+            <span class="closepopup cl">
                 <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#222">
                     <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                 </svg>
@@ -39,31 +39,58 @@
             </div>
         </div>
     </div>
-    <header class="parallax-block" id="home">
-        <div class="headerMain">
-            <div class="wrapper flexBetween">
-                <p><a href="#" class="logo">Startup</a></p>
-                <ul class="menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#works">Works</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#clients">Clients</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
+    <div class="formpopup">
+        <span class="closepopup cl">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#222">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+            </svg>
+        </span>
+        <p>Ви впевнені? Перевірте ще раз введену інформацію</p>
+        <div class="info" id="editableinfo">
+
         </div>
-        <div class="wrapper">
-            <div class="container-header">
-                <h1 id="edith1">Welcome to STARTUP</h1>
-                <p>Your Favourite Creative Agency Template</p>
-                <a href="#" id="start">Get Started</a>
+        <div class="flexBetween">
+            <a class="closepopup backbtn">Повернутися назад</a>
+            <a class="backbtn submitform">Так!</a>
+        </div>
+    </div>
+    <div class="errorform">
+        <span class="closepopup cl">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#222">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+            </svg>
+        </span>
+        <p>Ви не заповнили одне з полів!</p>
+        <a class="closepopup backbtn">Повернутися назад</a>
+    </div>
+    <header class="parallax-block" id="home">
+        <div class="parallax-bg"></div>
+        <div class="zindex5000">
+            <div class="headerMain">
+                <div class="wrapper flexBetween">
+                    <p><a href="#" class="logo">Startup</a></p>
+                    <ul class="menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#works">Works</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#clients">Clients</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="container-header">
+                    <h1 id="edith1">Welcome to STARTUP</h1>
+                    <p>Your Favourite Creative Agency Template</p>
+                    <a href="#" id="start">Get Started</a>
+                </div>
             </div>
         </div>
     </header>
     <main>
-        <section class="services" id="services">
+        <section class="services fade-section" id="services">
             <div class="wrapper">
                 <p class="srv-h1">Services</p>
                 <span class="line"></span>
@@ -108,7 +135,7 @@
                 </div>
             </div>
         </section>
-        <section class="services about" id="about">
+        <section class="services about fade-section" id="about">
             <div class="wrapper">
                 <p class="srv-h1">About Us</p>
                 <span class="line"></span>
@@ -178,7 +205,7 @@
                         <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" /></svg></a>
             </div>
         </section>
-        <section class="works" id="works">
+        <section class="works fade-section" id="works">
             <div class="wrapper">
                 <p class="srv-h1">Our Works</p>
                 <span class="line"></span>
@@ -347,11 +374,14 @@
             </div>
         </section>
         <div class="likeAd parallax-block">
-            <p>Do you like OUR WORK so far?</p>
-            <p>Let's talk about YOUR PROJECT!</p>
-            <a href="#">Get in Touch</a>
+            <div class="parallax-bg bg2t"></div>
+            <div class="zindex5000">
+                <p>Do you like OUR WORK so far?</p>
+                <p>Let's talk about YOUR PROJECT!</p>
+                <a href="#contact">Get in Touch</a>
+            </div>
         </div>
-        <section class="blog" id="blog">
+        <section class="blog fade-section" id="blog">
             <div class="wrapper flexCenter">
                 <p class="srv-h1">recent blog posts</p>
                 <span class="line"></span>
@@ -415,33 +445,41 @@
                 </div>
             </div>
         </section>
-        <section class="reviews" id="clients">
+        <section class="reviews fade-section" id="clients">
             <div class="wrapper flexCenter">
                 <div class="reviewLogos">
-                    <img src="img/logo5.png" alt="">
-                    <img src="img/logo4.png" alt="">
-                    <img src="img/logo3.png" alt="">
-                    <img src="img/logo2.png" alt="">
-                    <img src="img/logo1.png" alt="">
+                    <div class="logosTrack" id="logosTrack">
+                        <div class="logo-item"><img src="img/logo5.png" alt=""></div>
+                        <div class="logo-item"><img src="img/logo4.png" alt=""></div>
+                        <div class="logo-item"><img src="img/logo3.png" alt=""></div>
+                        <div class="logo-item"><img src="img/logo2.png" alt=""></div>
+                        <div class="logo-item"><img src="img/logo1.png" alt=""></div>
+                    </div>
                 </div>
-                <div class="reviewText">
-                    <p>Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus
-                        autem quibusdam et aut officiis debitis aut rerum”</p>
-                    <h4>John Doe, Google Inc.</h4>
+                <div class="quotes-slider">
+                    <div class="quotes-track">
+                        <div class="reviewText quote-item is-active">
+                            <p>Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”</p>
+                            <h4>John Doe, Google Inc.</h4>
+                        </div>
+                        <div class="reviewText quote-item">
+                            <p>Брврлаівовдмтмиг. Задумайтесь"</p>
+                            <h4>Якийсь чєл</h4>
+                        </div>
+                        <div class="reviewText quote-item">
+                            <p>qwertyuiopasdfghjklxcvbnm, think about that"</p>
+                            <h4>Lorem</h4>
+                        </div>
+                    </div>
                 </div>
-                <ul>
-                    <li>
-                        <span class="active"></span>
-                    </li>
-                    <li>
-                        <span></span>
-                    </li>
-                    <li>
-                        <span></span>
-                    </li>
+                <ul class="quotes-nav">
+                    <li><span class="is-active quote-btn" data-index="0"></span></li>
+                    <li><span class="quote-btn" data-index="1"></span></li>
+                    <li><span class="quote-btn" data-index="2"></span></li>
                 </ul>
+            </div>
         </section>
-        <section class="contact flexCenter" id="contact">
+        <section class="contact flexCenter fade-section" id="contact">
             <p class="srv-h1">Get in Touch</p>
             <span class="line"></span>
             <p class="blogp">Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet</p>
@@ -477,17 +515,17 @@
                     <form action="">
                         <div class="flexCenter">
                             <div class="inputs">
-                                <input type="text" name="" id="" placeholder="Your Name">
-                                <input type="text" name="" id="" placeholder="Your Email">
+                                <input type="text" name="" id="namein" class="reqinpform" placeholder="Your Name">
+                                <input type="mail" name="" id="mailin" class="reqinpform" placeholder="Your Email">
                             </div>
                             <div class="inputs">
-                                <input type="text" name="" id="" placeholder="Your Subject">
-                                <input type="text" name="" id="" placeholder="Company Name">
+                                <input type="text" name="" id="subjin" class="reqinpform" placeholder="Your Subject">
+                                <input type="text" name="" id="compin" class="reqinpform" placeholder="Company Name">
 
                             </div>
-                            <textarea name="" id=""></textarea>
+                            <textarea name="" id="messin" class="reqinpform textreqform"></textarea>
                             <div class="submitWrapper">
-                                <a href="" class="submit">Send Message</a>
+                                <a href="#" class="submit">Send Message</a>
                                 <p><span>*</span> We’ll contact you as as possible. We don’t reply on Monday.</p>
                             </div>
                         </div>
