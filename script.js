@@ -99,14 +99,18 @@ track.addEventListener('touchstart', function (e) {
   touchCurrentX = touchStartX
   isSwiping = true
   track.style.transition = "none"
-}, { passive: true })
+}, {
+  passive: true
+})
 
 track.addEventListener('touchmove', function (e) {
   if (!isSwiping) return
   touchCurrentX = e.touches[0].clientX
   const delta = touchCurrentX - touchStartX
   track.style.transform = `translateX(${delta}px)`
-}, { passive: true })
+}, {
+  passive: true
+})
 
 track.addEventListener('touchend', function () {
   if (!isSwiping) return
@@ -301,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (filledSlots.length !== 4) return;
 
     const currentOrder = filledSlots.map(slot => {
-      return slot.querySelector('.dragblock')?.dataset.word;
+      return slot.querySelector('.dragblock') ?.dataset.word;
     });
 
     const correctOrder = ['StartUp', 'Is', 'The', 'Best'];
@@ -365,7 +369,7 @@ formsub.addEventListener("click", function (e) {
 
   if (isValid) {
     e.preventDefault();
-    editableinfo.innerHTML = `<form action="" method="post" id="forminfo"><p name="name"><span style="font-weight: bold;">Ваше ім'я:</span> ${namein.value}</p><p name="mail"><span style="font-weight: bold;">Ваша ел. адреса:</span> ${mailin.value}</p><p name="subj"><span style="font-weight: bold;">Тема вашого повідомлення:</span> ${subjin.value}</p><p name="comp"><span style="font-weight: bold;">Назва вашої компанії:</span> ${compin.value}</p><div><p name="mess"><span style="font-weight: bold;">Ваше повідомлення:</span></p><p>${messin.value}</p><div></form>`;
+    editableinfo.innerHTML = `<p>Ви впевнені? Первірте ще раз введену інформацію</p><form action="" method="post" id="forminfo"><p name="name"><span style="font-weight: bold;">Ваше ім'я:</span> ${namein.value}</p><p name="mail"><span style="font-weight: bold;">Ваша ел. адреса:</span> ${mailin.value}</p><p name="subj"><span style="font-weight: bold;">Тема вашого повідомлення:</span> ${subjin.value}</p><p name="comp"><span style="font-weight: bold;">Назва вашої компанії:</span> ${compin.value}</p><div><p name="mess"><span style="font-weight: bold;">Ваше повідомлення:</span></p><p>${messin.value}</p><div></form>`;
     formpop.style.display = "block";
     black.style.display = "block";
   } else {
@@ -396,7 +400,9 @@ submitform.addEventListener("click", function (e) {
   };
 
   localStorage.setItem('formData', JSON.stringify(data));
-  console.log("Сохранено:", data);
+  submitform.style.display = "none"
+  editableinfo.innerHTML = "<p>Надіслано! Тепер ви можете закрити це вікно на хрестик</p>"
+
 });
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -422,14 +428,13 @@ const quotesbuttons = [...document.querySelectorAll('.quote-btn')]
 
 let quoteindex = 0
 let animatingquote = false
-const DURATION = 500
+const DURATION = 250
 const AUTOPLAY_DELAY = 4000
 
 let autoplayInterval = null
 
 function updateTrackHeight() {
   const active = quotes[quoteindex]
-  quotesTrack.style.height = active.scrollHeight + 'px'
 }
 
 function goToSlide(index) {
@@ -453,7 +458,7 @@ function goToSlide(index) {
 }
 
 function nextSlide() {
-  const nextIndex = (quoteindex + 1) % quotes.length 
+  const nextIndex = (quoteindex + 1) % quotes.length
   goToSlide(nextIndex)
 }
 
@@ -559,4 +564,110 @@ const fadeObserver = new IntersectionObserver((entries) => {
 
 fadeSections.forEach(section => {
   fadeObserver.observe(section)
+})
+
+//read more
+
+const parentread = document.querySelectorAll(".blogItemContent")
+
+parentread.forEach(item => {
+  const textread = item.querySelector(".contentMore"),
+    btnread = item.querySelector(".readmore")
+
+  btnread.addEventListener("click", function (e) {
+    e.preventDefault()
+      textread.classList.toggle("visibleread")
+      if (textread.classList.contains("visibleread")) {
+        btnread.textContent = "close"
+      } else {
+        btnread.textContent = "read more"
+      }
+  })
+});
+
+//cart
+
+const productsObj = {
+  1: {
+    "id": 1,
+    "name": "Hair Dresser",
+    "img": "img/work1.png",
+    "quantity": "1",
+    "price": "15000"
+  },
+  2: {
+    "id": 2,
+    "name": "",
+    "img": "",
+    "quantity": "",
+    "price": ""
+  },
+  3: {
+    "id": 3,
+    "name": "",
+    "img": "",
+    "quantity": "",
+    "price": ""
+  },
+  4: {
+    "id": "",
+    "name": "",
+    "img": "",
+    "quantity": "",
+    "price": ""
+  },
+  5: {
+    "id": "",
+    "name": "",
+    "img": "",
+    "quantity": "",
+    "price": ""
+  },
+  6: {
+    "id": "",
+    "name": "",
+    "img": "",
+    "quantity": "",
+    "price": ""
+  },
+  7: {
+    "id": "",
+    "name": "",
+    "img": "",
+    "quantity": "",
+    "price": ""
+  },
+  8: {
+    "id": "",
+    "name": "",
+    "img": "",
+    "quantity": "",
+    "price": ""
+  },
+  9: {
+    "id": "",
+    "name": "",
+    "img": "",
+    "quantity": "",
+    "price": ""
+  }
+}
+
+const parentcard = document.querySelectorAll(".gridItem")
+
+parentcard.forEach(item => {
+  const btncard = item.querySelector(".view-btn")
+  btncard.addEventListener("click", function(e) {
+    e.preventDefault()
+    let productId = btncard.dataset.id
+    // for(let product of productsObj) {
+    //   console.log(product)
+    // }
+    const product = Object.values(productsObj).find(item => productId == item.id)
+    localStorage.setItem("cart", JSON.stringify(product))
+    if(localStorage.getItem("cart") != null) {
+      
+    }
+    console.log(product)
+  })
 })
