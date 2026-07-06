@@ -1,3 +1,22 @@
+//burger menu
+
+const burgerBtn = document.getElementById("burgerBtn")
+const mainMenu = document.getElementById("mainMenu")
+
+if (burgerBtn && mainMenu) {
+  burgerBtn.addEventListener("click", function () {
+    burgerBtn.classList.toggle("active")
+    mainMenu.classList.toggle("active")
+  })
+
+  mainMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function () {
+      burgerBtn.classList.remove("active")
+      mainMenu.classList.remove("active")
+    })
+  })
+}
+
 const sortBtn = document.querySelectorAll(".cardLinks"),
   sortItem = document.querySelectorAll(".gridItem")
 
@@ -213,6 +232,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let draggedBlock = null;
 
+  const savedOrder = JSON.parse(localStorage.getItem('puzzleOrder'));
+
+  if (savedOrder && savedOrder.length === positionSlots.length) {
+    restoreSolvedState(savedOrder);
+    return;
+  }
+
   dragblocks.forEach(block => {
     block.addEventListener('dragstart', function (e) {
       draggedBlock = this;
@@ -305,25 +331,45 @@ document.addEventListener('DOMContentLoaded', function () {
     if (filledSlots.length !== 4) return;
 
     const currentOrder = filledSlots.map(slot => {
-      return slot.querySelector('.dragblock') ?.dataset.word;
+      return slot.querySelector('.dragblock')?.dataset.word;
     });
 
-    const correctOrder = ['StartUp', 'Is', 'The', 'Best'];
     const isCorrect = currentOrder.every((word, index) => word === correctOrder[index]);
 
     if (isCorrect) {
       filledSlots.forEach(slot => slot.classList.add('correct'));
+      localStorage.setItem('puzzleOrder', JSON.stringify(currentOrder));
       showSuccess();
     }
   }
 
+  function restoreSolvedState(order) {
+    positionSlots.forEach((slot, index) => {
+      slot.innerHTML = '';
+
+      const block = document.createElement('div');
+      block.className = 'dragblock filled dropped correct';
+      block.dataset.word = order[index];
+      block.textContent = order[index];
+      block.setAttribute('draggable', 'false');
+
+      slot.appendChild(block);
+      slot.classList.add('filled', 'correct');
+
+      dragblocks.forEach(item => {
+        item.style.display = "none"
+      })
+    });
+
+    showSuccess();
+  }
+
   function showSuccess() {
-    h1.textContent = "Hello Developer!!!!"
+    h1.textContent = "Hello Developer!!!!";
     document.querySelector('.authpopup').style.display = 'none';
-    black.style.display = 'none'
+    black.style.display = 'none';
   }
 });
-
 
 //tripple
 
@@ -576,12 +622,12 @@ parentread.forEach(item => {
 
   btnread.addEventListener("click", function (e) {
     e.preventDefault()
-      textread.classList.toggle("visibleread")
-      if (textread.classList.contains("visibleread")) {
-        btnread.textContent = "close"
-      } else {
-        btnread.textContent = "read more"
-      }
+    textread.classList.toggle("visibleread")
+    if (textread.classList.contains("visibleread")) {
+      btnread.textContent = "close"
+    } else {
+      btnread.textContent = "read more"
+    }
   })
 });
 
@@ -592,82 +638,211 @@ const productsObj = {
     "id": 1,
     "name": "Hair Dresser",
     "img": "img/work1.png",
-    "quantity": "1",
-    "price": "15000"
+    "quantity": 0,
+    "price": 15000
   },
   2: {
     "id": 2,
-    "name": "",
-    "img": "",
-    "quantity": "",
-    "price": ""
+    "name": "Birdie",
+    "img": "img/work2.png",
+    "quantity": 0,
+    "price": 5260
   },
   3: {
     "id": 3,
-    "name": "",
-    "img": "",
-    "quantity": "",
-    "price": ""
+    "name": "Notebook",
+    "img": "img/work3.png",
+    "quantity": 0,
+    "price": 26890
   },
   4: {
-    "id": "",
-    "name": "",
-    "img": "",
-    "quantity": "",
-    "price": ""
+    "id": 4,
+    "name": "Digital Camera",
+    "img": "img/work4.png",
+    "quantity": 0,
+    "price": 14300
   },
   5: {
-    "id": "",
-    "name": "",
-    "img": "",
-    "quantity": "",
-    "price": ""
+    "id": 5,
+    "name": "Bike",
+    "img": "img/work5.png",
+    "quantity": 0,
+    "price": 1200
   },
   6: {
-    "id": "",
-    "name": "",
-    "img": "",
-    "quantity": "",
-    "price": ""
+    "id": 6,
+    "name": "Notebook with pen",
+    "img": "img/work6.png",
+    "quantity": 0,
+    "price": 3500
   },
   7: {
-    "id": "",
-    "name": "",
-    "img": "",
-    "quantity": "",
-    "price": ""
+    "id": 7,
+    "name": "Flower pot",
+    "img": "img/work7.png",
+    "quantity": 0,
+    "price": 9850
   },
   8: {
-    "id": "",
-    "name": "",
-    "img": "",
-    "quantity": "",
-    "price": ""
+    "id": 8,
+    "name": "Office tools",
+    "img": "img/work8.png",
+    "quantity": 0,
+    "price": 4632
   },
   9: {
-    "id": "",
-    "name": "",
-    "img": "",
-    "quantity": "",
-    "price": ""
+    "id": 9,
+    "name": "Events calendar",
+    "img": "img/work9.png",
+    "quantity": 0,
+    "price": 5648
   }
 }
 
 const parentcard = document.querySelectorAll(".gridItem")
+const cartDiv = document.querySelector(".cartpopup")
+const cartBtn = document.querySelector(".cart")
+const cartEdit = cartDiv.querySelector(".prodDetails")
+const totalPriceEl = document.querySelector(".total-price")
+
+function addToCart(productId) {
+  const product = Object.values(productsObj).find(item => item.id == productId)
+  if (!product) return
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || []
+  const existing = cart.find(item => item.id == product.id)
+
+  if (existing) {
+    existing.quantity++
+  } else {
+    cart.push({
+      ...product,
+      quantity: 1
+    })
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart))
+}
+
+function changeQuantity(productId, delta) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || []
+  const item = cart.find(item => item.id == productId)
+  if (!item) return
+
+  item.quantity += delta
+
+  if (item.quantity <= 0) {
+    cart = cart.filter(item => item.id != productId)
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart))
+  renderCart()
+}
+
+function removeFromCart(productId) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || []
+  cart = cart.filter(item => item.id != productId)
+  localStorage.setItem("cart", JSON.stringify(cart))
+  renderCart()
+}
+
+function renderCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || []
+
+  if (cart.length > 0) {
+    let html = ""
+    let totalPrice = 0
+
+    for (let i = 0; i < cart.length; i++) {
+      html += `
+        <div class="cart-item">
+          <img src="${cart[i].img}">
+          <div class="cart-item-info">
+            <p>${cart[i].name}</p>
+            <span>${cart[i].price} грн</span>
+            <div class="quantity-controls">
+              <button class="qty-btn" data-id="${cart[i].id}" data-action="minus">−</button>
+              <span>${cart[i].quantity}</span>
+              <button class="qty-btn" data-id="${cart[i].id}" data-action="plus">+</button>
+            </div>
+          </div>
+          <button class="remove-btn" data-id="${cart[i].id}">×</button>
+        </div>
+      `
+      totalPrice += Number(cart[i].price) * cart[i].quantity
+    }
+
+    cartEdit.innerHTML = html
+    if (totalPriceEl) totalPriceEl.textContent = totalPrice + " грн"
+
+    document.querySelectorAll(".qty-btn").forEach(btn => {
+      btn.addEventListener("click", function () {
+        const id = btn.dataset.id
+        const action = btn.dataset.action
+        changeQuantity(id, action === "plus" ? 1 : -1)
+      })
+    })
+
+    document.querySelectorAll(".remove-btn").forEach(btn => {
+      btn.addEventListener("click", function () {
+        removeFromCart(btn.dataset.id)
+      })
+    })
+  } else {
+    cartEdit.innerHTML = "<p>У кошику немає товарів</p>"
+    if (totalPriceEl) totalPriceEl.textContent = "0 грн"
+  }
+}
+
+function flyToCart(imgEl, cartEl) {
+  const imgRect = imgEl.getBoundingClientRect()
+  const cartRect = cartEl.getBoundingClientRect()
+
+  const flyer = imgEl.cloneNode(true)
+  flyer.classList.add("fly-to-cart")
+  flyer.style.top = imgRect.top + "px"
+  flyer.style.left = imgRect.left + "px"
+  flyer.style.width = imgRect.width + "px"
+  flyer.style.height = imgRect.height + "px"
+
+  document.body.appendChild(flyer)
+
+  const deltaX = cartRect.left + cartRect.width / 2 - (imgRect.left + imgRect.width / 2)
+  const deltaY = cartRect.top + cartRect.height / 2 - (imgRect.top + imgRect.height / 2)
+
+  requestAnimationFrame(() => {
+    flyer.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(0.15)`
+    flyer.style.opacity = "0.3"
+  })
+
+  flyer.addEventListener("transitionend", function () {
+    flyer.remove()
+    cartEl.classList.add("cart-bump")
+    setTimeout(() => cartEl.classList.remove("cart-bump"), 400)
+  }, { once: true })
+}
 
 parentcard.forEach(item => {
   const btncard = item.querySelector(".view-btn")
-  btncard.addEventListener("click", function(e) {
+  btncard.addEventListener("click", function (e) {
     e.preventDefault()
-    let productId = btncard.dataset.id
-    // for(let product of productsObj) {
-    //   console.log(product)
-    // }
-    const product = Object.values(productsObj).find(item => productId == item.id)
-    localStorage.setItem("cart", JSON.stringify(product))
-    if(localStorage.getItem("cart") != null) {
-      
-    }
-    console.log(product)
+    const productId = btncard.dataset.id
+    const imgEl = item.querySelector("img")
+    if (imgEl) flyToCart(imgEl, cartBtn)
+    addToCart(productId)
+  })
+})
+
+cartBtn.addEventListener("click", function (e) {
+  e.preventDefault()
+  black.style.display = "block"
+  cartDiv.style.display = "block"
+  renderCart()
+})
+
+closepopup.forEach(item => {
+  item.addEventListener("click", function () {
+    black.style.display = "none"
+    cartDiv.style.display = "none"
   })
 })
