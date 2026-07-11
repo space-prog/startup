@@ -435,7 +435,6 @@ h1 {
 .itemTrack {
     position: absolute;
     top: 0;
-    width: 260px;
     height: 260px;
 }
 
@@ -452,8 +451,7 @@ h1 {
 
 .fixed {
     position: relative;
-    width: 100%;
-    max-width: 1200px;
+    max-width: 79%;
     height: 350px;
     margin: 0 auto;
     overflow: hidden;
@@ -1528,10 +1526,6 @@ footer p {
 
 @media (max-width: 767px) {
 
-    .wrapper {
-        padding: 0 16px;
-    }
-
     h1 {
         font-size: 30px;
         line-height: 36px;
@@ -1572,6 +1566,10 @@ footer p {
         font-size: 17px;
     }
 
+    .itemTrack {
+        width: 260px;
+    }
+
     .advantages {
         flex-direction: column;
         gap: 10px;
@@ -1591,16 +1589,6 @@ footer p {
 
     .fixed {
         height: 300px;
-    }
-
-    .itemTrack {
-        width: 220px;
-        height: 220px;
-    }
-
-    #btnLeft,
-    #btnRight {
-        display: none;
     }
 
     .works ul {
