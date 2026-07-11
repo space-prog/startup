@@ -663,6 +663,26 @@ h1 {
     font-family: "Roboto Slab";
     text-align: center;
     text-decoration: none;
+    border: 1px solid #c0301c;
+    transition: all .3s ease;
+}
+
+.view-btn path {
+    fill: #c0301c;
+    transition: all .3s ease;
+}
+
+.view-btn:hover {
+    background-color: #c0301c;
+    color: #fff;
+    border-color: #fff;
+    transform: scale(1.05);
+    transition: all .3s ease;
+}
+
+.view-btn:hover path {
+    fill: #fff;
+    transition: all .3s ease;
 }
 
 .likeAd {
