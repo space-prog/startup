@@ -82,15 +82,17 @@
             <div class="headerMain">
                 <div class="wrapper flexBetween">
                     <p><a href="#" class="logo">Startup</a></p>
-                    <ul class="menu" id="mainMenu">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#works">Works</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#clients">Clients</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+                    <div class="menu" id="mainMenu">
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#works">Works</a></li>
+                            <li><a href="#blog">Blog</a></li>
+                            <li><a href="#clients">Clients</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
                     <button class="burger" id="burgerBtn" aria-label="Menu">
                         <span></span>
                         <span></span>
@@ -172,10 +174,10 @@
                         ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.</p>
                 </div>
             </div>
-            <div class="fixed">
+            <div class="fixed" id="fix">
                 <div class="flex" id="track">
                     <div class="itemTrack">
-                        <img src="img/about1.png" alt="" class>
+                        <img src="img/about1.png" alt="" class="item-img">
                         <h4>Md. Khalil Uddin</h4>
                         <p>Head of Ideas</p>
                         <ul>
@@ -186,7 +188,7 @@
                         </ul>
                     </div>
                     <div class="itemTrack">
-                        <img src="img/about2.png" alt="" class>
+                        <img src="img/about2.png" alt="" class="item-img">
                         <h4>Rubel Miah</h4>
                         <p>Lead WordPress Developer</p>
                         <ul>
@@ -197,7 +199,7 @@
                         </ul>
                     </div>
                     <div class="itemTrack">
-                        <img src="img/about3.png" alt="" class>
+                        <img src="img/about3.png" alt="" class="item-img">
                         <h4>Shamim Mia</h4>
                         <p>Sr. Web Developer</p>
                         <ul>
@@ -208,7 +210,7 @@
                         </ul>
                     </div>
                     <div class="itemTrack">
-                        <img src="img/about4.png" alt="" class>
+                        <img src="img/about4.png" alt="" class="item-img">
                         <h4>John Doe</h4>
                         <p>Front-end Developer</p>
                         <ul>
@@ -243,6 +245,7 @@
                         <div class="item-content">
                             <h4>Hair Dresser</h4>
                             <p>Branding</p>
+                            <h4>15000 грн</h4>
                             <a href="#" class="view-btn" data-id="1">ADD TO CARD <svg version="1.2" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 6 10" width="6px" height="10px">
                                     <path
@@ -250,11 +253,12 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem" data-category="design">
+                    <div class="gridItem" data-category="branding design">
                         <a href="#"><img src="img/work2.png" alt=""></a>
                         <div class="item-content">
                             <h4>Birdie</h4>
                             <p>Design</p>
+                            <h4>5260 грн</h4>
                             <a href="#" class="view-btn" data-id="2">ADD TO CARD <svg version="1.2" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 6 10" width="6px" height="10px">
                                     <path
@@ -262,11 +266,12 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem" data-category="development">
+                    <div class="gridItem" data-category="development design">
                         <a href="#"><img src="img/work3.png" alt=""></a>
                         <div class="item-content">
                             <h4>Notebook</h4>
-                            <p>Development</p>
+                            <h4>Development</h4>
+                            <h4>26890 грн</h4>
                             <a href="#" class="view-btn" data-id="3">ADD TO CARD <svg version="1.2" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 6 10" width="6px" height="10px">
                                     <path
@@ -279,6 +284,7 @@
                         <div class="item-content">
                             <h4>Digital Camera</h4>
                             <p>Design</p>
+                            <h4>14300 грн</h4>
                             <a href="#" class="view-btn" data-id="4">ADD TO CARD <svg version="1.2" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 6 10" width="6px" height="10px">
                                     <path
@@ -286,11 +292,12 @@
                                 </svg></a>
                         </div>
                     </div>
-                    <div class="gridItem" data-category="branding">
+                    <div class="gridItem" data-category="branding strategy">
                         <a href="#"><img src="img/work5.png" alt=""></a>
                         <div class="item-content">
                             <h4>Bike</h4>
                             <p>Branding</p>
+                            <h4>1200 грн</h4>
                             <a href="#" class="view-btn" data-id="5">ADD TO CARD <svg version="1.2" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 6 10" width="6px" height="10px">
                                     <path
@@ -303,6 +310,7 @@
                         <div class="item-content">
                             <h4>Notebook with pen</h4>
                             <p>Strategy</p>
+                            <h4>3500 грн</h4>
                             <a href="#" class="view-btn" data-id="6">ADD TO CARD <svg version="1.2" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 6 10" width="6px" height="10px">
                                     <path
@@ -315,6 +323,7 @@
                         <div class="item-content">
                             <h4>Flower Pot</h4>
                             <p>Development</p>
+                            <h4>9850 грн</h4>
                             <a href="#" class="view-btn" data-id="7">ADD TO CARD <svg version="1.2" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 6 10" width="6px" height="10px">
                                     <path
@@ -327,6 +336,7 @@
                         <div class="item-content">
                             <h4>Office Tools</h4>
                             <p>Branding</p>
+                            <h4>4632 грн</h4>
                             <a href="#" class="view-btn" data-id="8">ADD TO CARD <svg version="1.2" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 6 10" width="6px" height="10px">
                                     <path
@@ -339,6 +349,7 @@
                         <div class="item-content">
                             <h4>Events Calendar</h4>
                             <p>Development</p>
+                            <h4>5648 грн</h4>
                             <a href="#" class="view-btn" data-id="9">ADD TO CARD <svg version="1.2" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 6 10" width="6px" height="10px">
                                     <path

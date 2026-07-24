@@ -50,16 +50,46 @@ sortBtn.forEach(itemBtn => {
   })
 })
 
+//slider
+
 const track = document.getElementById('track')
 const btnL = document.getElementById('btnLeft')
 const btnR = document.getElementById('btnRight')
+const fixedWrap = document.getElementById('fix')
 
-const SLIDE_W = 315
+const GAP = 30
 const items = [...track.querySelectorAll('.itemTrack')]
 const itemsLength = items.length
 
+let SLIDE_W = 315
 let isAnimating = false
 let idx = 0
+
+function getVisibleCount() {
+  const w = window.innerWidth
+  if (w <= 767) return 1
+  if (w <= 1023) return 2
+  if (w <= 1439) return 3
+  if (w <= 1919) return 4
+  if (w <= 2559) return 4
+  return 4
+}
+
+function calcSlideWidth() {
+  const visibleCount = getVisibleCount()
+  const containerWidth = fixedWrap.clientWidth
+  const cardWidth = (containerWidth - GAP * (visibleCount - 1)) / visibleCount
+  SLIDE_W = cardWidth + GAP
+  track.style.setProperty('--slide-w', `${cardWidth}px`)
+}
+
+function syncHeight() {
+  const sample = track.querySelector('.itemTrack')
+  if (!sample) return
+  const h = sample.offsetHeight
+  track.style.height = `${h}px`
+  fixedWrap.style.height = `${h}px`
+}
 
 function updateSlider() {
   while (track.firstChild) {
@@ -77,6 +107,8 @@ function updateSlider() {
     item.style.left = `${SLIDE_W * i}px`
     track.appendChild(item)
   }
+
+  syncHeight()
 }
 
 function gotoIndex(index) {
@@ -95,17 +127,30 @@ function gotoIndex(index) {
 
 btnL.addEventListener("click", function (e) {
   e.preventDefault()
+  if (isAnimating) return
   items.unshift(items.pop())
   gotoIndex(-1)
 })
 
 btnR.addEventListener("click", function (e) {
   e.preventDefault()
+  if (isAnimating) return
   items.push(items.shift())
   gotoIndex(1)
 })
 
+calcSlideWidth()
 updateSlider()
+
+let resizeTimer
+window.addEventListener('resize', function () {
+  clearTimeout(resizeTimer)
+  resizeTimer = setTimeout(() => {
+    calcSlideWidth()
+    syncHeight()
+    updateSlider()
+  }, 150)
+})
 
 let touchStartX = 0
 let touchCurrentX = 0
@@ -164,7 +209,8 @@ function applyFilter(filter) {
   })
 
   gridItems.forEach(item => {
-    if (filter === 'all' || item.dataset.category === filter) {
+    const categories = item.dataset.category.split(' ')
+    if (filter === 'all' || categories.includes(filter)) {
       item.classList.remove('hidden')
     } else {
       item.classList.add('hidden')
@@ -479,9 +525,31 @@ const AUTOPLAY_DELAY = 4000
 
 let autoplayInterval = null
 
+
 function updateTrackHeight() {
-  const active = quotes[quoteindex]
+  let maxHeight = 0
+  
+  quotes.forEach(quote => {
+    quote.style.transition = 'none'
+    quote.style.position = 'static'
+    quote.style.opacity = '0'
+    
+    const h = quote.offsetHeight
+    if (h > maxHeight) maxHeight = h
+    
+    quote.style.position = ''
+    quote.style.opacity = ''
+    quote.style.transition = ''
+  })
+  
+  quotesTrack.style.height = `${maxHeight + 15}px`
 }
+
+let quotesResizeTimer
+window.addEventListener('resize', function () {
+  clearTimeout(quotesResizeTimer)
+  quotesResizeTimer = setTimeout(updateTrackHeight, 150)
+})
 
 function goToSlide(index) {
   if (animatingquote || index === quoteindex) return
@@ -499,7 +567,6 @@ function goToSlide(index) {
     next.classList.add('is-active')
     quoteindex = index
     animatingquote = false
-    updateTrackHeight()
   }, DURATION)
 }
 
@@ -604,7 +671,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
     entry.target.classList.toggle('is-visible', entry.isIntersecting)
   })
 }, {
-  threshold: 0.15,
+  threshold: 0.05,
   rootMargin: '0px 0px -100px 0px'
 })
 
@@ -731,8 +798,8 @@ function changeQuantity(productId, delta) {
 
   item.quantity += delta
 
-  if (item.quantity <= 0) {
-    cart = cart.filter(item => item.id != productId)
+  if (item.quantity < 1) {
+    item.quantity = 1
   }
 
   localStorage.setItem("cart", JSON.stringify(cart))
@@ -759,7 +826,7 @@ function renderCart() {
           <img src="${cart[i].img}">
           <div class="cart-item-info">
             <p>${cart[i].name}</p>
-            <span>${cart[i].price} грн</span>
+            <span>${cart[i].price * cart[i].quantity} грн</span>
             <div class="quantity-controls">
               <button class="qty-btn" data-id="${cart[i].id}" data-action="minus">−</button>
               <span>${cart[i].quantity}</span>
@@ -846,3 +913,33 @@ closepopup.forEach(item => {
     cartDiv.style.display = "none"
   })
 })
+
+//hide header
+
+const headerEl = document.querySelector('.headerMain')
+
+let lastScrollY = window.scrollY
+let scrollTicking = false
+const SCROLL_HIDE_OFFSET = 80
+
+function handleHeaderScroll() {
+  const currentScrollY = window.scrollY
+
+  if (currentScrollY <= SCROLL_HIDE_OFFSET) {
+    headerEl.classList.remove('hide-header')
+  } else if (currentScrollY > lastScrollY) {
+    headerEl.classList.add('hide-header')
+  } else if (currentScrollY < lastScrollY) {
+    headerEl.classList.remove('hide-header')
+  }
+
+  lastScrollY = currentScrollY
+  scrollTicking = false
+}
+
+window.addEventListener('scroll', function () {
+  if (!scrollTicking) {
+    requestAnimationFrame(handleHeaderScroll)
+    scrollTicking = true
+  }
+}, { passive: true })
