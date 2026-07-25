@@ -1318,18 +1318,18 @@ footer p {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-.cart {
+/* .cart {
     position: absolute;
     top: 50%;
     right: 5%;
     transform: translateY(-50%);
     transition: filter 0.3s ease, transform 0.3s ease;
-}
+} */
 
-.cart:hover {
+/* .cart:hover {
     filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
     transform: scale(1.1) translateY(-50%);
-}
+} */
 
 .cartpopup {
     display: none;
@@ -1423,6 +1423,34 @@ footer p {
     color: #666;
 }
 
+.cartIcon {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.cartIcon:hover {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
+    transform: scale(1.1) translateY(-50%);
+}
+
+.cartquant {
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 50%;
+}
+
 .quantity-controls {
     display: flex;
     align-items: center;
@@ -1490,6 +1518,10 @@ footer p {
     margin: 0;
 }
 
+.info {
+    padding-bottom: 15px;
+}
+
 @media (max-width: 1919px) {
     .fixed {
         max-width: 84%;
@@ -1537,7 +1569,7 @@ footer p {
         margin-left: 20px;
     }
 
-    .cart {
+    .cartIcon {
         right: 100px;
     }
 
@@ -1577,7 +1609,7 @@ footer p {
         font-size: 20px;
     }
 
-    .cart {
+    .cartIcon {
         right: 60px;
     }
 
@@ -1627,9 +1659,26 @@ footer p {
     }
 
     .works ul {
-        flex-wrap: wrap;
-        gap: 14px 20px;
-        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        flex-wrap: nowrap;
+        gap: 20px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+        padding: 0 20px;
+        margin: 0 -20px;
+        scrollbar-width: none;
+    }
+    
+    .works ul::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .works ul li {
+        flex-shrink: 0;
+        scroll-snap-align: start;
     }
 
     .worksGrid {
@@ -1932,7 +1981,7 @@ footer p {
     will-change: transform, opacity;
 }
 
-.cart.cart-bump {
+.cartIcon .cart-bump {
     animation: cartBump 0.4s ease;
 }
 

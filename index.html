@@ -50,7 +50,7 @@
 
         </div>
         <div class="flexBetween">
-            <a class="closepopup backbtn">Повернутися назад</a>
+            <a class="backbtn">Повернутися назад</a>
             <a class="backbtn submitform">Так!</a>
         </div>
     </div>
@@ -99,8 +99,9 @@
                         <span></span>
                     </button>
                 </div>
-                <a href="#">
+                <a href="#" class="cartIcon">
                     <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" class="cart" fill="#e3e3e3"><path d="M223.5-103.5Q200-127 200-160t23.5-56.5Q247-240 280-240t56.5 23.5Q360-193 360-160t-23.5 56.5Q313-80 280-80t-56.5-23.5Zm400 0Q600-127 600-160t23.5-56.5Q647-240 680-240t56.5 23.5Q760-193 760-160t-23.5 56.5Q713-80 680-80t-56.5-23.5ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+                    <span class="cartquant">0</span>
                 </a>
             </div>
             <div class="wrapper">
@@ -515,20 +516,24 @@
 
                 </div>
                 <div class="contactForm">
-                    <form action="">
+                    <form action="send.php" method="POST">
                         <div class="flexCenter">
                             <div class="inputs">
-                                <input type="text" name="" id="namein" class="reqinpform" placeholder="Your Name">
-                                <input type="mail" name="" id="mailin" class="reqinpform" placeholder="Your Email">
+                                <input type="text" id="namein" class="reqinpform" placeholder="Your Name">
+                                <input type="mail" id="mailin" class="reqinpform" placeholder="Your Email">
                             </div>
                             <div class="inputs">
-                                <input type="text" name="" id="subjin" class="reqinpform" placeholder="Your Subject">
-                                <input type="text" name="" id="compin" class="reqinpform" placeholder="Company Name">
+                                <input type="text" id="subjin" class="reqinpform" placeholder="Your Subject">
+                                <input type="text" id="compin" class="reqinpform" placeholder="Company Name">
 
                             </div>
-                            <textarea name="" id="messin" class="reqinpform textreqform"></textarea>
+                            <textarea name="message" id="messin" class="reqinpform textreqform"></textarea>
+                            <input type="hidden" name="name" id="nameinhid">
+                            <input type="hidden" name="mail" id="mailinhid">
+                            <input type="hidden" name="subject" id="subjinhid">
+                            <input type="hidden" name="compname" id="compinhid">
                             <div class="submitWrapper">
-                                <a href="#" class="submit">Send Message</a>
+                                <button type="submit" class="submit">Send Message</button>
                                 <p><span>*</span> We’ll contact you as as possible. We don’t reply on Monday.</p>
                             </div>
                         </div>

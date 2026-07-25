@@ -445,7 +445,16 @@ const formpop = document.querySelector(".formpopup"),
   compin = document.getElementById("compin"),
   messin = document.getElementById("messin"),
   editableinfo = document.getElementById("editableinfo"),
-  submitform = document.querySelector(".submitform")
+  submitform = document.querySelector(".submitform"),
+  nameinhid = document.getElementById("nameinhid"),
+  mailinhid = document.getElementById("mailinhid"),
+  subjinhid = document.getElementById("subjinhid"),
+  compinhid = document.getElementById("compinhid")
+
+namein.value = nameinhid.value
+mailin.value = mailinhid.value  
+subjin.value = subjinhid.value
+compin.value = compinhid.value
 
 formsub.addEventListener("click", function (e) {
   let isValid = true;
@@ -483,6 +492,11 @@ closepopup.forEach((item) => {
 submitform.addEventListener("click", function (e) {
   e.preventDefault();
 
+  nameinhid.value = namein.value;
+  mailinhid.value = mailin.value;
+  subjinhid.value = subjin.value;
+  compinhid.value = compin.value;
+
   const data = {
     name: namein.value,
     mail: mailin.value,
@@ -492,9 +506,9 @@ submitform.addEventListener("click", function (e) {
   };
 
   localStorage.setItem('formData', JSON.stringify(data));
-  submitform.style.display = "none"
-  editableinfo.innerHTML = "<p>Надіслано! Тепер ви можете закрити це вікно на хрестик</p>"
 
+  const formEl = document.querySelector('.contactForm form');
+  formEl.submit();
 });
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -768,9 +782,17 @@ const productsObj = {
 
 const parentcard = document.querySelectorAll(".gridItem")
 const cartDiv = document.querySelector(".cartpopup")
-const cartBtn = document.querySelector(".cart")
+const cartBtn = document.querySelector(".cartIcon")
 const cartEdit = cartDiv.querySelector(".prodDetails")
 const totalPriceEl = document.querySelector(".total-price")
+const closeBtncart = document.querySelectorAll(".closepopup") 
+const cartnumber = document.querySelector(".cartquant")
+
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || []
+  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0)
+  if (cartnumber) cartnumber.textContent = totalCount
+}
 
 function addToCart(productId) {
   const product = Object.values(productsObj).find(item => item.id == productId)
@@ -789,6 +811,7 @@ function addToCart(productId) {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart))
+  updateCartCount()
 }
 
 function changeQuantity(productId, delta) {
@@ -804,13 +827,16 @@ function changeQuantity(productId, delta) {
 
   localStorage.setItem("cart", JSON.stringify(cart))
   renderCart()
+  updateCartCount()
 }
+
 
 function removeFromCart(productId) {
   let cart = JSON.parse(localStorage.getItem("cart")) || []
   cart = cart.filter(item => item.id != productId)
   localStorage.setItem("cart", JSON.stringify(cart))
   renderCart()
+  updateCartCount()
 }
 
 function renderCart() {
@@ -907,7 +933,7 @@ cartBtn.addEventListener("click", function (e) {
   renderCart()
 })
 
-closepopup.forEach(item => {
+closeBtncart.forEach(item => {
   item.addEventListener("click", function () {
     black.style.display = "none"
     cartDiv.style.display = "none"
