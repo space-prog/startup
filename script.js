@@ -1,19 +1,22 @@
 //burger menu
 
 const burgerBtn = document.getElementById("burgerBtn")
-const mainMenu = document.getElementById("mainMenu")
+const mainMenu = document.getElementById("mainMenu"),
+    black = document.querySelector('.blackbg')
 
 if (burgerBtn && mainMenu) {
   burgerBtn.addEventListener("click", function () {
     burgerBtn.classList.toggle("active")
     mainMenu.classList.toggle("active")
+    black.style.display = "block"
   })
-
+  function removeMenu() {
+    burgerBtn.classList.remove("active")
+    mainMenu.classList.remove("active")
+  }
+  black.addEventListener("click", removeMenu)
   mainMenu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", function () {
-      burgerBtn.classList.remove("active")
-      mainMenu.classList.remove("active")
-    })
+    link.addEventListener("click", removeMenu)
   })
 }
 
@@ -87,8 +90,8 @@ function syncHeight() {
   const sample = track.querySelector('.itemTrack')
   if (!sample) return
   const h = sample.offsetHeight
-  track.style.height = `${h}px`
-  fixedWrap.style.height = `${h}px`
+  // track.style.height = `${h}px`
+  // fixedWrap.style.height = `${h}px`
 }
 
 function updateSlider() {
@@ -249,21 +252,26 @@ function parallax(event) {
 }
 
 //popup
+function authPopup() {
+  const closeBtn = document.querySelector(".closepopup"),
+    popup = document.querySelector('.authpopup'),
+    start = document.getElementById('start')
+  function closeAuth() {
+    black.style.display = "none"
+    popup.style.display = "none"
+  }
+  black.addEventListener("click", closeAuth)
 
-const closeBtn = document.querySelector(".closepopup"),
-  popup = document.querySelector('.authpopup'),
-  black = document.querySelector('.blackbg'),
-  start = document.getElementById('start')
+  closeBtn.addEventListener('click', closeAuth)
+  start.addEventListener('click', function (e) {
+    e.preventDefault()
+    popup.style.display = "block"
+    black.style.display = "block"
+  })
 
-closeBtn.addEventListener('click', function () {
-  popup.style.display = "none"
-  black.style.display = "none"
-})
-start.addEventListener('click', function (e) {
-  e.preventDefault()
-  popup.style.display = "block"
-  black.style.display = "block"
-})
+}
+
+authPopup()
 
 //drag'n drop
 
@@ -438,7 +446,7 @@ const formpop = document.querySelector(".formpopup"),
   formsub = document.querySelector(".submit"),
   req = document.querySelectorAll(".reqinpform"),
   errform = document.querySelector(".errorform"),
-  closepopup = document.querySelectorAll('.closepopup'),
+  closepopup = document.querySelectorAll('.backbtn'),
   namein = document.getElementById("namein"),
   mailin = document.getElementById("mailin"),
   subjin = document.getElementById("subjin"),
