@@ -13,6 +13,7 @@ if (burgerBtn && mainMenu) {
   function removeMenu() {
     burgerBtn.classList.remove("active")
     mainMenu.classList.remove("active")
+    black.style.display = "none"
   }
   black.addEventListener("click", removeMenu)
   mainMenu.querySelectorAll("a").forEach(link => {
