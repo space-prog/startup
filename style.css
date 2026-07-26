@@ -24,6 +24,10 @@ h1 {
     padding-bottom: 20px;
 }
 
+.rel {
+    position: relative;
+}
+
 .blackbg {
     position: fixed;
     display: none;
@@ -471,7 +475,7 @@ h1 {
 #track {
     position: relative;
     height: 100%;
-    min-height: 400px;
+    min-height: 450px;
     transition: transform .5s ease;
 }
 
@@ -1435,16 +1439,22 @@ footer p {
 
 .cartIcon {
     display: flex;
-    position: absolute;
-    top: 50%;
-    right: 5%;
-    transform: translateY(-50%);
+    position: relative;
+    /* top: 50%; */
+    /* right: 5%; */
+    /* transform: translateY(-50%); */
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .cartIcon:hover {
     filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
-    transform: scale(1.1) translateY(-50%);
+    transform: scale(1.1) translateY(-20%);
+}
+
+.cartBurger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cartquant {
@@ -1579,10 +1589,6 @@ footer p {
         margin-left: 20px;
     }
 
-    .cartIcon {
-        right: 100px;
-    }
-
     .headerMain .wrapper.flexBetween {
         position: relative;
     }
@@ -1617,10 +1623,6 @@ footer p {
 
     .logo {
         font-size: 20px;
-    }
-
-    .cartIcon {
-        right: 60px;
     }
 
     .container-header {
@@ -1977,6 +1979,12 @@ footer p {
     footer p,
     .menu a {
         font-size: 16px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .cartBurger {
+        gap: 40px;
     }
 }
 

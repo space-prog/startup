@@ -2,19 +2,23 @@
 
 const burgerBtn = document.getElementById("burgerBtn")
 const mainMenu = document.getElementById("mainMenu"),
-    black = document.querySelector('.blackbg')
+  black = document.querySelector('.blackbg')
 
 if (burgerBtn && mainMenu) {
-  burgerBtn.addEventListener("click", function () {
-    burgerBtn.classList.toggle("active")
-    mainMenu.classList.toggle("active")
-    black.style.display = "block"
-  })
   function removeMenu() {
     burgerBtn.classList.remove("active")
     mainMenu.classList.remove("active")
     black.style.display = "none"
   }
+  burgerBtn.addEventListener("click", function () {
+    if (burgerBtn.classList.contains("active")) {
+      removeMenu()
+    } else {
+      burgerBtn.classList.toggle("active")
+      mainMenu.classList.toggle("active")
+      black.style.display = "block"
+    }
+  })
   black.addEventListener("click", removeMenu)
   mainMenu.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", removeMenu)
@@ -257,6 +261,7 @@ function authPopup() {
   const closeBtn = document.querySelector(".closepopup"),
     popup = document.querySelector('.authpopup'),
     start = document.getElementById('start')
+
   function closeAuth() {
     black.style.display = "none"
     popup.style.display = "none"
@@ -447,7 +452,7 @@ const formpop = document.querySelector(".formpopup"),
   formsub = document.querySelector(".submit"),
   req = document.querySelectorAll(".reqinpform"),
   errform = document.querySelector(".errorform"),
-  closepopup = document.querySelectorAll('.backbtn'),
+  closepopup = document.querySelectorAll('.closepopup'),
   namein = document.getElementById("namein"),
   mailin = document.getElementById("mailin"),
   subjin = document.getElementById("subjin"),
@@ -461,7 +466,7 @@ const formpop = document.querySelector(".formpopup"),
   compinhid = document.getElementById("compinhid")
 
 namein.value = nameinhid.value
-mailin.value = mailinhid.value  
+mailin.value = mailinhid.value
 subjin.value = subjinhid.value
 compin.value = compinhid.value
 
@@ -489,14 +494,17 @@ formsub.addEventListener("click", function (e) {
   }
 });
 
+function deleteForm() {
+  errform.style.display = "none"
+  black.style.display = "none"
+  formpop.style.display = "none"
+}
+
 closepopup.forEach((item) => {
-  item.addEventListener("click", function (e) {
-    e.preventDefault()
-    errform.style.display = "none"
-    black.style.display = "none"
-    formpop.style.display = "none"
-  })
+  item.addEventListener("click", deleteForm)
 })
+
+black.addEventListener("click", deleteForm)
 
 submitform.addEventListener("click", function (e) {
   e.preventDefault();
@@ -551,20 +559,20 @@ let autoplayInterval = null
 
 function updateTrackHeight() {
   let maxHeight = 0
-  
+
   quotes.forEach(quote => {
     quote.style.transition = 'none'
     quote.style.position = 'static'
     quote.style.opacity = '0'
-    
+
     const h = quote.offsetHeight
     if (h > maxHeight) maxHeight = h
-    
+
     quote.style.position = ''
     quote.style.opacity = ''
     quote.style.transition = ''
   })
-  
+
   quotesTrack.style.height = `${maxHeight + 15}px`
 }
 
@@ -794,7 +802,7 @@ const cartDiv = document.querySelector(".cartpopup")
 const cartBtn = document.querySelector(".cartIcon")
 const cartEdit = cartDiv.querySelector(".prodDetails")
 const totalPriceEl = document.querySelector(".total-price")
-const closeBtncart = document.querySelectorAll(".closepopup") 
+const closeBtncart = document.querySelectorAll(".closepopup")
 const cartnumber = document.querySelector(".cartquant")
 
 function updateCartCount() {
@@ -821,6 +829,11 @@ function addToCart(productId) {
 
   localStorage.setItem("cart", JSON.stringify(cart))
   updateCartCount()
+}
+
+function deleteCart() {
+  black.style.display = "none"
+  cartDiv.style.display = "none"
 }
 
 function changeQuantity(productId, delta) {
@@ -921,7 +934,9 @@ function flyToCart(imgEl, cartEl) {
     flyer.remove()
     cartEl.classList.add("cart-bump")
     setTimeout(() => cartEl.classList.remove("cart-bump"), 400)
-  }, { once: true })
+  }, {
+    once: true
+  })
 }
 
 parentcard.forEach(item => {
@@ -943,11 +958,10 @@ cartBtn.addEventListener("click", function (e) {
 })
 
 closeBtncart.forEach(item => {
-  item.addEventListener("click", function () {
-    black.style.display = "none"
-    cartDiv.style.display = "none"
-  })
+  item.addEventListener("click", deleteCart)
 })
+
+black.addEventListener("click", deleteCart)
 
 //hide header
 
@@ -959,6 +973,11 @@ const SCROLL_HIDE_OFFSET = 80
 
 function handleHeaderScroll() {
   const currentScrollY = window.scrollY
+
+  if (mainMenu && mainMenu.classList.contains('active')) {
+    scrollTicking = false
+    return
+  }
 
   if (currentScrollY <= SCROLL_HIDE_OFFSET) {
     headerEl.classList.remove('hide-header')
@@ -977,4 +996,6 @@ window.addEventListener('scroll', function () {
     requestAnimationFrame(handleHeaderScroll)
     scrollTicking = true
   }
-}, { passive: true })
+}, {
+  passive: true
+})
